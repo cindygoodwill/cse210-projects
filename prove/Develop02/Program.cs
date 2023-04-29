@@ -6,7 +6,7 @@ class Program
     {
         // create menu and user input varialbes
         Journal journal = new Journal();
-        int input = 0;
+        int _input = 0;
 
         List<string> menu = new List<string>
         {
@@ -20,7 +20,7 @@ class Program
         };
 
         // While user input is not 5 keep displaying menu
-        while (input != 5)
+        while (_input != 5)
         {
             foreach(string menuItem in menu)
             {
@@ -30,29 +30,29 @@ class Program
             Console.Write("> ");
             string response = Console.ReadLine();
             int userInput = int.Parse(response);
-            input = userInput;
+            _input = userInput;
 
-            if (input == 1) // Write
+            if (_input == 1) // Write
             {
                 journal.AddEntry();
             }
-            else if (input == 2) // Display
+            else if (_input == 2) // Display
             {
                 journal.DisplayAllEntries();
             }
-            else if (input == 3) // Load - NOT DONE
+            else if (_input == 3) // Load - NOT DONE
             {
                 List<Entry> newEntry = journal.ReadFromFile(); 
                
                 foreach (Entry i in newEntry)
                 {
-                    journal.entries.Add(i); 
+                    journal._entries.Add(i); 
                 }
                 journal.DisplayAllEntries();
             }
-            else if (input == 4) // DONE
+            else if (_input == 4) // DONE
             {
-                journal.SavetoFile(journal.entries);
+                journal.SavetoFile(journal._entries);
             }
             
         }

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 public class PromptGenerator  // DONE
 {
-    public List<string> prompts;
+    public List<string> _prompts;
 
     public PromptGenerator()
     {
-        prompts = new List<string>
+        _prompts = new List<string>
         {
             "Who was the most interesting person I interacted with today?",
             "What was the best part of my day?",
@@ -29,7 +29,7 @@ public class PromptGenerator  // DONE
     {
         Random randomGenerator = new Random();
         int number = randomGenerator.Next(0, 14);
-        return prompts[number];
+        return _prompts[number];
 
     }
 }

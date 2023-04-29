@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 public class Journal
 {
-    public List<Entry> entries;
+    public List<Entry> _entries;
 
     public Journal()
     {
-        entries = new List<Entry>();
+        _entries = new List<Entry>();
     }
 
     public void AddEntry() //DONE
@@ -33,12 +33,12 @@ public class Journal
         Entry entry = new Entry(date, mood, prompt, response);
         
         // Add to list
-        entries.Add(entry);
+        _entries.Add(entry);
     }
 
     public void DisplayAllEntries() // DONE
     {
-        foreach (Entry i in entries)
+        foreach (Entry i in _entries)
         {
             i.DisplayEntry();
         }
