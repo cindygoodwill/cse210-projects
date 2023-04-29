@@ -1,17 +1,18 @@
 public class Entry
 {
-    string date, prompt, response;
+    string date, mood, prompt, response;
 
-    public Entry(string _date, string _prompt, string _response)
+    public Entry(string _date, string _mood, string _prompt, string _response)
     {
         date = _date;
+        mood = _mood;
         prompt = _prompt;
         response = _response;
     }
     
     public void DisplayEntry() // DONE
     {
-        Console.WriteLine($"Date: {date}  Prompt: {prompt}");
+        Console.WriteLine($"Date: {date} | Mood: {mood} | Prompt: {prompt}");
         Console.WriteLine(response);
         Console.WriteLine();
     }
@@ -19,7 +20,7 @@ public class Entry
     public string GetEntryAsString()  // DONE
 
     {
-        return string.Format("{0},{1},{2}", date, prompt, response);
+        return string.Format("{0},{1},{2},{3}", date, mood, prompt, response);
     }
 
 }

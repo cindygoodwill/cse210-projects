@@ -16,6 +16,10 @@ public class Journal
         DateTime theCurrentTime = DateTime.Now;
         string date = theCurrentTime.ToShortDateString();
 
+        // Get Mood
+        Console.Write("What is your mood? ");
+        string mood = Console.ReadLine();
+
         // Get prompt
         PromptGenerator prompter = new PromptGenerator();
         string prompt = prompter.ChoosePrompt();
@@ -26,7 +30,7 @@ public class Journal
         string response = Console.ReadLine();
 
         // Put into entry
-        Entry entry = new Entry(date, prompt, response);
+        Entry entry = new Entry(date, mood, prompt, response);
         
         // Add to list
         entries.Add(entry);
@@ -73,11 +77,12 @@ public class Journal
             // Split up string
             string[] parts = line.Split(",");
             // parts[0] - date
+            // parts[3] - mood
             // parts[1] - prompt
             // parts[2] - entry
 
             // Create new entry
-            Entry entry = new Entry(parts[0], parts[1], parts[2]);
+            Entry entry = new Entry(parts[0], parts[1], parts[2], parts[3]);
 
             //Add entry to entry list
             entryList.Add(entry);
