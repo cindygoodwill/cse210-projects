@@ -78,11 +78,22 @@ class Program
                     }
                 }
 
+                if (getOut == 0)
+                {
+                    // Clear console
+                    Console.Clear();
+                    
+                    // Display scripture and statement to request user input
+                    scripture.DisplayScrip();
+                    Console.WriteLine();
+                    Console.Write("Press enter to hide words. Or type \"quit\" to return to the menu. ");
+                    string userInput = Console.ReadLine();
+                }
+
+
                 // Unhide all
                 scripture.UnhideAll();
                 
-                // Quit
-                break;
             }
             else
             {

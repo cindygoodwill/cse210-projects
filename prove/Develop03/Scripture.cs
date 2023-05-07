@@ -17,6 +17,9 @@ public class Scripture
 
     public void SetText()
     {
+        // Clearing previous text
+        _text.Clear();
+        
         // Get the text from the user
         Console.WriteLine("Write the scripture here: ");
         Console.Write("> ");
