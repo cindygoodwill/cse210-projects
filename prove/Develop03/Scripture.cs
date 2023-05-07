@@ -50,28 +50,28 @@ public class Scripture
         Console.WriteLine(_reference + text);
     }
 
-    public void HideWords() // NOT DONE
+    public void HideWords() // DONE
     {
-        //Variables
-        bool _reallyRandom = false;
-        
-        // Choose random
-        while (_reallyRandom == false)
+        for (int i = 0; i < 3; i++)
         {
             Random randomGenerator = new Random();
             int number = randomGenerator.Next(0, _text.Count);
-            // Test if hidden
-            if (_text[number].IsItHidden() == false);
+
+            // Test if hidden then hide word
+            if (_text[number].IsItHidden() == false)
             {
                 _text[number].HideWord();
             }
-                
-            // Hide word      
-            
-            // Clear consol   
-            
-            // Display scripture and statement to request user input
+            else if (IsCompletelyHidden() == true)
+            {
+                break;
+            }
+            else
+            {
+                i = i - 1;
+            } 
         }
+        
     }
 
     public void UnhideAll() // DONE

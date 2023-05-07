@@ -49,15 +49,33 @@ class Program
             }
             else if (_input == 3) //Memorize
             {
-                // Clear console
-
-                // Display scripture and statement to request user input
-
-                // Rotate through until all are hidden
-                while (scripture.IsCompletelyHidden() == false)
+                int getOut = 0;
+                
+                while (scripture.IsCompletelyHidden() == false && getOut == 0)
                 {
-                    
+                    // Clear console
+                    Console.Clear();
 
+                    // Display scripture and statement to request user input
+                    scripture.DisplayScrip();
+
+                    Console.WriteLine();
+                    Console.Write("Press enter to hide words. Or type \"quit\" to return to the menu. ");
+                    string userInput = Console.ReadLine();
+
+
+                    if (userInput == "")
+                    {
+                        scripture.HideWords();
+                    }
+                    else if (userInput == "quit")
+                    {
+                        getOut = 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine("This isn't one of the accepted inputs. Try harder!");
+                    }
                 }
 
                 // Unhide all
@@ -68,7 +86,7 @@ class Program
             }
             else
             {
-                return;
+                break;
             }
         }
         
