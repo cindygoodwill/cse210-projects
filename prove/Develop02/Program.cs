@@ -40,7 +40,7 @@ class Program
             {
                 journal.DisplayAllEntries();
             }
-            else if (_input == 3) // Load - NOT DONE
+            else if (_input == 3) // Load DONE
             {
                 List<Entry> newEntry = journal.ReadFromFile(); 
                
