@@ -1,3 +1,6 @@
+using System.IO;
+using System.Collections.Generic;
+
 public class Parent : Person
 {
     // Attributes
@@ -33,6 +36,45 @@ public class Parent : Person
     }
 
     // Methods
+    public void SaveAllChildren()
+    {
+        foreach (Child child in _children)
+        {
+            child.SaveToFile();
+        }
+    }
+    public void CheckChores()
+    {
+        // Variables
+        string againResponse = "Y";
+        
+        // Repeat until done checking
+        while (againResponse == "Y")
+        {
+            // Which child?
+            Console.Clear();
+            Console.WriteLine("Which child would you like to check their chores?");
+            foreach (Child child in _children)
+            {
+                int indexInt = _children.IndexOf(child);
+                Console.WriteLine($"  {indexInt + 1}. {child.GetFirstName()}");
+            }
+            Console.Write("Choose child: ");
+            string childIndex = Console.ReadLine();
+            int childIndexInt = int.Parse(childIndex) - 1;
+
+            // Which chores? Remove chore
+            Console.WriteLine();
+            Console.WriteLine("Which chore do you want to check off as done?");
+
+            _children[childIndexInt].RemoveChore();
+
+            // Again?
+            Console.Write("Do you want to check another chore? (Y/N) ");
+            againResponse = Console.ReadLine();
+        }
+
+    }
     public void AddToChildList(Child child)
     {
         _children.Add(child);
@@ -97,7 +139,7 @@ public class Parent : Person
             
             child.SetFirstName(part2[0]);
             child.SetLastName(part2[1]);
-            child.SetLastName(part2[2]);
+            child.SetType(part2[2]);
             int numAge3 = int.Parse(part2[3]);
             child.SetAge(numAge3);
             bool GSbool = bool.Parse(part2[4]);
@@ -126,9 +168,12 @@ public class Parent : Person
         // For each child display name, chores and consequences.
         foreach (Child child in _children)
         {
-            Console.WriteLine(child.GetFirstName());
+            Console.WriteLine();
+            Console.WriteLine($"*******{child.GetFirstName()}*******");
             child.DisplayChores();
             child.DisplayConsequences();
+            
         }
+        Console.WriteLine();
     }
 }

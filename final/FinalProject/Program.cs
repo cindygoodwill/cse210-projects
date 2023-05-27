@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Collections.Generic;
 
 class Program
 {
@@ -12,20 +14,22 @@ class Program
         Console.Clear();
         Console.Write("First name: ");
         string responseFirst = Console.ReadLine();
+        parent.SetFirstName(responseFirst);
 
         Console.Write("Last name: ");
         string responseLast = Console.ReadLine();
+        parent.SetLastName(responseLast);
 
         bool isItNew = parent.IsThisNewUser(responseFirst, responseLast);
 
-        if (isItNew == false)
+        if (isItNew == true)
         {
             parent.ReadFromFile();
             parent.DisplayDash();
         }
-        else if (isItNew == true)
+        else if (isItNew == false)
         {
-            parent.DisplayDash();
+            Console.WriteLine("New User. No files found.");
         }
 
         // Create menu
@@ -33,7 +37,7 @@ class Program
         {
             "Options:",
             "  1. Display My Info",
-            "  2. Create Child",
+            "  2. Add Child",
             "  3. Check Chores",
             "  4. Save",
             "  5. Quit"
@@ -62,10 +66,10 @@ class Program
                 Console.Write("Press Enter to choose another option. ");
                 string input2 = Console.ReadLine();
 
-                if (string.IsNullOrEmpty(input2))
-                {
-                    break;
-                }
+                // if (string.IsNullOrEmpty(input2))
+                // {
+                //     break;
+                // }
             }
             else if (_input == 2) // Create child
             {
@@ -131,14 +135,18 @@ class Program
             }
             else if (_input == 3) // Check chores
             {
-                // Which child?
-                
-                // how to remove a chore from a child using RemoveChore()
+                parent.CheckChores();
             }
             else if (_input == 4) // Save
             {
                 // Adult save to file
+                parent.SaveToFile();
+
                 // Rotate through all children and save to file 
+                parent.SaveAllChildren();
+
+                Console.WriteLine("Done saving!");
+
             }
             else // Quit
             {
