@@ -169,7 +169,7 @@ public class Parent : Person
         foreach (Child child in _children)
         {
             Console.WriteLine();
-            Console.WriteLine($"*******{child.GetFirstName()}*******");
+            Console.WriteLine($"*******  {child.GetFirstName()}  *******");
             child.DisplayChores();
             child.DisplayConsequences();
             
